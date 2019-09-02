@@ -122,10 +122,11 @@
         </tr  >
         <tr>  <td><p th:text="*{smartphone.price}"></p></td></tr>
         <tr>
-            <td><img  th:src="${'data:image/png;base64,' +service.getImage(smartphone.image_front)}"  width="150px" height="150px"></td></tr>
-
+            <td><img  th:src="${'data:image/png;base64,' +service2.getImage(smartphone.image_front)}"  width="150px" height="150px"></td></tr>
+        <form th:action="@{/user/selectSmartphone}" th:object="${selectSmartphone=smartphone}" >    </form>
         </tbody>
     </table>
+
 </div>
 
 </div>

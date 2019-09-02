@@ -77,15 +77,23 @@ public List<String> searchAutocomplete(@RequestParam(value = "term", required = 
         model.addAttribute("priceUp",new String());
         model.addAttribute("photos", productService.getImage(productService.getAllSmartphones()));
         model.addAttribute("service",productService);
+
         return "searchPage";
     }
     @PostMapping("/searchPage")
     public String searchPage(@ModelAttribute("smartphoneFilter") Smartphone smartphone,@ModelAttribute("priceDown") String priceDown,@ModelAttribute("priceUp") String priceUp, Model model){
 
         System.out.println("post method searchPage "+smartphone.getName());
-
+        model.addAttribute("service2",productService);
         model.addAttribute("filterSmartphoneList", productService.mainFilterForSmartphones(smartphone, priceDown, priceUp));
+      model.addAttribute("selectSmartphone", new Smartphone());
         return "searchPage";
+    }
+    @PostMapping("/selectSmartphone")
+    public String sselectSmartphone(@ModelAttribute("selectSmartphone") Smartphone smartphone, Model model){
+        System.out.println("post method searchPage "+smartphone.getName());
+        model.addAttribute("service2",productService);
+        return "selectSmartphone";
     }
     @RequestMapping("/main")
     public String main(Model model){

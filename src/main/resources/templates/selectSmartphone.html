@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+</head>
+<body>
+<div th:include="layout/menu :: menuFragment" ></div>
+
+            <form >
+                <table >
+                    <thead></thead>
+                    <tbody th:each="smartphone:${selectSmartphone}" >
+                    <tr  >
+                        <td><p th:text="*{smartphone.name}"></p></td>
+
+                    </tr  >
+                    <tr>  <td><p th:text="*{smartphone.price}"></p></td></tr>
+                    <tr>
+                        <td><img  th:src="${'data:image/png;base64,' +service2.getImage(smartphone.image_front)}"  width="150px" height="150px"></td></tr>
+
+                    </tbody>
+                </table>
+            </form>
+
+
+</body>
+</html>
