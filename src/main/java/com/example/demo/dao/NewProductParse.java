@@ -70,5 +70,8 @@ photos.put("frontImage",products.stream().map(x->Base64.encodeBase64String(x.get
           photos.put("rightImage",products.stream().map(x->Base64.encodeBase64String(x.getImage_right_side())).collect(Collectors.toList()));
       return photos;
   }
+  public String getImage(byte[] image){
+        return Base64.encodeBase64String(image);
+  }
 
 }

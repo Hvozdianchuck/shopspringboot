@@ -11,6 +11,8 @@ public interface ProductService {
     List<String> filterByName(String name);
     List<Double> filterByPrice(Double price);
 List<Smartphone> mainFilter(Smartphone smartphone);
+    String getImage(byte[] image);
+    List<Smartphone> mainFilterForSmartphones(Smartphone smartphone, String priceDown, String priceUp);
     List<String> filterBySmartphoneMemoryOperativeMemoryVolume(String operativeMemoryVolume);
     List<String> filterBySmartphoneMemoryBuildMemory(String build_memory);
     List<String> filterBySmartphoneProcessorProcessorNumbersCore(String build_memory);

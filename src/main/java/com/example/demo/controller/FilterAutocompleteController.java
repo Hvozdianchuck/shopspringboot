@@ -23,11 +23,7 @@ public class FilterAutocompleteController {
     public List<String> filterAutocompleteName(@RequestParam(value = "term", required = false, defaultValue = "") String term){
         return productService.filterByName(term);
     }
-    @RequestMapping(value = "/filterAutocompletePrice", method = RequestMethod.GET)
-    @ResponseBody
-    public List<String> filterAutocompletePrice(@RequestParam(value = "term", required = false, defaultValue = "") String term){
-        return productService.filterByPrice(new Double(term)).stream().map(x->x+"").collect(Collectors.toList());
-    }
+
     @RequestMapping(value = "/filterAutocompleteOperativeMemoryVolume", method = RequestMethod.GET)
     @ResponseBody
     public List<String> filterAutocompleteOperativeMemoryVolume(@RequestParam(value = "term", required = false, defaultValue = "") String term){

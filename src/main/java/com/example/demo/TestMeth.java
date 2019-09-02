@@ -8,6 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestMeth {
   ModelAndView modelAndView;
@@ -27,8 +29,14 @@ public class TestMeth {
     }
 
     public static void main(String[] args) {
-        Smartphone smartphone = new Smartphone();
-        System.out.println(smartphone.getImage_bottom());
+        List<Integer> smartphones=new ArrayList<>();
+        smartphones.add(1);
+        smartphones.add(2);
+        List<Integer> smartphones2=new ArrayList<>();
+        smartphones2.add(1);
+        smartphones2.add(2);
+        smartphones2.retainAll(smartphones);
+        smartphones2.forEach(x-> System.out.println(x));
     }
 
 

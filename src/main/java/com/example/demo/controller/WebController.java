@@ -80,11 +80,11 @@ public List<String> searchAutocomplete(@RequestParam(value = "term", required = 
         return "searchPage";
     }
     @PostMapping("/searchPage")
-    public String searchPage(@ModelAttribute("smartphoneFilter") Smartphone smartphone, Model model){
+    public String searchPage(@ModelAttribute("smartphoneFilter") Smartphone smartphone,@ModelAttribute("priceDown") String priceDown,@ModelAttribute("priceUp") String priceUp, Model model){
 
         System.out.println("post method searchPage "+smartphone.getName());
 
-        model.addAttribute("filterSmartphoneList", new ArrayList<Smartphone>());
+        model.addAttribute("filterSmartphoneList", productService.mainFilterForSmartphones(smartphone, priceDown, priceUp));
         return "searchPage";
     }
     @RequestMapping("/main")

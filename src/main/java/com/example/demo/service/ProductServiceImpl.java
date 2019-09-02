@@ -45,6 +45,17 @@ public class ProductServiceImpl implements ProductService {
         return null;
     }
 
+    @Override
+    public String getImage(byte[] image) {
+        return newProductParse.getImage(image);
+    }
+
+    @Override
+    public List<Smartphone> mainFilterForSmartphones(Smartphone smartphone, String priceDown, String priceUp) {
+        System.out.println("post method searchPage 2 "+smartphone.getName());
+        return productFilter.mainFilterSmartphone(smartphone, priceDown, priceUp);
+    }
+
 
     @Override
     public List<String> filterBySmartphoneMemoryOperativeMemoryVolume(String operativeMemoryVolume) {
@@ -60,19 +71,19 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<String> filterBySmartphoneProcessorProcessorNumbersCore(String numbersCore) {
 
-        return  smartphoneRepository.filterSmartphoneProcessorProcessorNumbersCore(numbersCore);
+        return  smartphoneRepository.filterSmartphoneProcessorProcessorNumbersCore(numbersCore).stream().map(x->x.getSmartphoneProcessor().getProcessor_numbers_core()).collect(Collectors.toList());
     }
 
     @Override
     public List<String> filterBySmartphoneCameraMainCamera(String main_camera) {
 
-        return smartphoneRepository.filterSmartphoneCameraMainCamera(main_camera);
+        return smartphoneRepository.filterSmartphoneCameraMainCamera(main_camera).stream().map(x->x.getSmartphoneCamera().getMain_camera()).collect(Collectors.toList());
     }
 
     @Override
     public List<String> filterBySmartphoneDisplayDisplay_diagonal(String display_diagonal) {
 
-        return  smartphoneRepository.filterSmartphoneDisplayDisplayDiagonal(display_diagonal);
+        return  smartphoneRepository.filterSmartphoneDisplayDisplayDiagonal(display_diagonal).stream().map(x->x.getSmartphoneDisplay().getDisplay_diagonal()).collect(Collectors.toList());
     }
 
     @Override
@@ -103,8 +114,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Smartphone> getAllSmartphones() {
-       productFilter.setProductsList(StreamSupport.stream(smartphoneRepository.findAll().spliterator(), false).collect(Collectors.toList()));
-        StreamSupport.stream(smartphoneRepository.findAll().spliterator(), false).collect(Collectors.toList()).forEach(x-> System.out.println(x.getName()));
 
         return   StreamSupport.stream(smartphoneRepository.findAll().spliterator(), false).collect(Collectors.toList());
     }
