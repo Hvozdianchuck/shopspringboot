@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script type="text/javascript">
+        $(function(){
+            $("#products").autocomplete({
+                source: "searchProduct",
+                minLenght: 2
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+<div th:fragment="menuFragment" class="container"  >
+<nav  class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top"  style="z-index: 1" >
+
+        <a class="nav-link dropdown-toggle " href="#"  data-toggle="dropdown">
+           Продукти
+        </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Компютери</a>
+            <a class="dropdown-item" href="#">Телефони</a>
+        </div>
+
+
+    <form class="form-inline" th:action="@{/user/search}"  method="post" >
+
+        <input class="form-control " type="text"  name="parameterSearch" id="products" style="z-index: 3"     placeholder="Search">
+        <button class="btn btn-success" type="submit">Пошук</button>
+    </form>
+
+    <div class="dropdown">
+        <button type="button" class=" btn  dropdown-toggle" data-toggle="dropdown">
+            <p th:text="#{language.text}" style="color:blue;"></p>
+        </button>
+        <div class="dropdown-menu" style="padding-bottom: 10px">
+            <a class="dropdown-item" th:href="@{${#httpServletRequest.getRequestURI()}(language=EN)}">EN</a>
+            <a class="dropdown-item" th:href="@{${#httpServletRequest.getRequestURI()}(language=UK)}">UK</a>
+
+        </div>
+    </div>
+
+
+     </nav>
+</div>
+<br>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+
+
+<div class="container">
+    <h3>Navbar Forms</h3>
+    <p>Use the .form-inline class to align form elements side by side inside the navbar.</p>
+</div>
+
+</body>
+</html>
+

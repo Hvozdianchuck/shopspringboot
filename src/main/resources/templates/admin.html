@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns = "http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript">
+        $(function(){
+            $("#products").autocomplete({
+                source: "user/searchProduct",
+                minLenght: 2
+            });
+        });
+    </script>
+</head>
+<body data-spy="scroll">
+<div th:include="layout/menu :: menuFragment"></div>
+
+<nav   style=" color: green; margin: 75px 50px 75px 100px;">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#newcomputer">Section 1</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#newsmartphone">Section 2</a>
+        </li>
+       </ul>
+</nav>
+<div id="newcomputer">
+
+</div>
+<div id="newsmartphone">
+    <form th:action="@{/admin}" th:object="${newSmartphone}" method="post" style="background: azure" enctype="multipart/form-data">
+     <table>
+         <thead>
+         Smartphone
+         </thead>
+         <tbody>
+         <tr>
+         <td><p th:text="#{name.text}"></p></td>
+         <td> <input type="text" th:field="*{name}"></td>
+             <td><p th:text="#{price.text}"></p></td>
+             <td> <input type="text" th:field="*{price}"></td>
+             <td><p th:text="#{number.text}"></p></td>
+             <td> <input type="text" th:field="*{number}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{text_information.text}"></p></td>
+             <td> <input type="text" th:field="*{text_information}"></td>
+             <td><p th:text="#{article.text}"></p></td>
+             <td> <input type="text" th:field="*{article}"></td>
+             <td><p th:text="#{model_line.text}"></p></td>
+             <td> <input type="text" th:field="*{model_range}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{class_smartphone.text}"></p></td>
+             <td> <input type="text" th:field="*{class_SmartPhone}"></td>
+             <td><p th:text="#{number_of_SIM_cards.text}"></p></td>
+             <td> <input type="text" th:field="*{number_0f_sim_carts}"></td>
+             <td><p th:text="#{sim_card_format.text}"></p></td>
+             <td> <input type="text" th:field="*{format_sim_carts}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{data_transfer_standards.text}"></p></td>
+             <td> <input type="text" th:field="*{standards_transfer_data}"></td>
+             <td><p th:text="#{LTE.text}"></p></td>
+             <td> <input type="text" th:field="*{lte}"></td>
+             <td><p th:text="#{security.text}"></p></td>
+             <td> <input type="text" th:field="*{security}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{operating_system.text}"></p></td>
+             <td> <input type="text" th:field="*{OS}"></td>
+             <td><p th:text="#{charging_technologies.text}"></p></td>
+             <td> <input type="text" th:field="*{charging_technologies}"></td>
+             <td><p th:text="#{battery_type.text}"></p></td>
+             <td> <input type="text" th:field="*{battery}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{battery_capacity.text}"></p></td>
+             <td> <input type="text" th:field="*{battery_capacity}"></td>
+             <td><p th:text="#{wireless_technology.text}"></p></td>
+             <td> <input type="text" th:field="*{wireless_technologies}"></td>
+             <td><p th:text="#{WLAN.text}"></p></td>
+             <td> <input type="text" th:field="*{WLAN}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{bluetooth.text}"></p></td>
+             <td> <input type="text" th:field="*{bluetooth}"></td>
+             <td><p th:text="#{NFC_chip_near_field_communication.text}"></p></td>
+             <td> <input type="text" th:field="*{NFC_chip}"></td>
+             <td><p th:text="#{satellite_system.text}"></p></td>
+             <td> <input type="text" th:field="*{satellite_system}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{case_material.text}"></p></td>
+             <td> <input type="text" th:field="*{case_material}"></td>
+             <td><p th:text="#{dust_and_moisture_protection.text}"></p></td>
+             <td> <input type="text" th:field="*{dust_wet_protect}"></td>
+             <td><p th:text="#{shockproof.text}"></p></td>
+             <td> <input type="text" th:field="*{shockproof}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{color_primary.text}"></p></td>
+             <td> <input type="text" th:field="*{main_color}"></td>
+             <td><p th:text="#{thickness.text}"></p></td>
+             <td> <input type="text" th:field="*{thickness}"></td>
+             <td><p th:text="#{total_width_of_the_product.text}"></p></td>
+             <td> <input type="text" th:field="*{total_width_of_the_product}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{total_height_of_product.text}"></p></td>
+             <td> <input type="text" th:field="*{total_hight_of_the_product}"></td>
+             <td><p th:text="#{weight.text}"></p></td>
+             <td> <input type="text" th:field="*{weight}"></td>
+             <td><p th:text="#{interfaces.text}"></p></td>
+             <td> <input type="text" th:field="*{interfaces}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{graduation_year.text}"></p></td>
+             <td> <input type="text" th:field="*{graduation_year}"></td>
+             <td><p th:text="#{model.text}"></p></td>
+             <td> <input type="text" th:field="*{model_line}"></td>
+             <td><p th:text="#{level_2_lineup.text}"></p></td>
+             <td> <input type="text" th:field="*{model_line_second_level}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{warranty.text}"></p></td>
+             <td> <input type="text" th:field="*{guarantee}"></td>
+             <td><p th:text="#{radio.text}"></p></td>
+             <td> <input type="text" th:field="*{radio}"></td>
+             <td><p th:text="#{screen_position_sensor.text}"></p></td>
+             <td> <input type="text" th:field="*{screen_position_sensor}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{light_sensor.text}"></p></td>
+             <td> <input type="text" th:field="*{light_sensor}"></td>
+             <td><p th:text="#{proximity_sensor.text}"></p></td>
+             <td> <input type="text" th:field="*{proximity_sensor}"></td>
+             <td><p th:text="#{producing_country.text}"></p></td>
+             <td> <input type="text" th:field="*{producing_country}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{bar_code.text}"></p></td>
+             <td> <input type="text" th:field="*{bar_code}"></td>
+             <td><p th:text="#{internal_memory.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneMemory.operative_memory_volume}"></td>
+             <td><p th:text="#{memory_card_support.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneMemory.carts_memory}"></td>
+        </tr>
+         <tr>
+             <td><p th:text="#{ram_volume.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneMemory.build_memory}"></td>
+             <td><p th:text="#{os_version.text}"></p></td>
+             <td> <input type="text" th:field="*{version_OS}"></td>
+             <td><p th:text="#{sim_card_mode.text}"></p></td>
+             <td> <input type="text" th:field="*{sim_cart_mode}"></td>
+         </tr>
+         <tr>
+             <td><p th:text="#{communication_standard.text}"></p></td>
+             <td> <input type="text" th:field="*{standard_conection}"></td>
+         </tr>
+         <tr>
+             <td><p th:text="#{memory_card_capacity_up_to.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneMemory.volume_of_memory}"></td>
+             <td><p th:text="#{processor_number_of_cores.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneProcessor.processor_numbers_core}"></td>
+             <td><p th:text="#{processor_manufacturer.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneProcessor.processor_producer}"></td>
+        </tr>
+         <tr>
+             <td><p th:text="#{processor_model.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneProcessor.processor_model}"></td>
+             <td><p th:text="#{processor_clock_speed.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneProcessor.processor_clock_frequency}"></td>
+             <td><p th:text="#{GPU.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneProcessor.graphic_processor}"></td>
+        </tr>
+         <tr>
+             <td><p th:text="#{display_diagonal.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneDisplay.display_diagonal}"></td>
+             <td><p th:text="#{display_maximum_resolution.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneDisplay.display_maximum_resolution}"></td>
+             <td><p th:text="#{display_matrix_type.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneDisplay.display_matrix_type}"></td>
+            </tr>
+         <tr>
+             <td><p th:text="#{display_pixel_density_per_inch.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneDisplay.display_pixel_density_per_inch}"></td>
+             <td><p th:text="#{display_security.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneDisplay.display_security}"></td>
+             <td><p th:text="#{the_main_camera.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneCamera.main_camera}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{the_main_camera_is_optional.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneCamera.main_camera_futher}"></td>
+             <td><p th:text="#{video_recording.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneCamera.video_recording}"></td>
+             <td><p th:text="#{selfie_camera.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneCamera.front_camera}"></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{front_camera_optional.text}"></p></td>
+             <td> <input type="text" th:field="*{smartphoneCamera.front_camera_recording}"></td>
+             <td><p th:text="#{image_front.text}"></p></td>
+             <td><input type="file" name="files"/></td>
+             <td><p th:text="#{image_back.text}"></p></td>
+             <td> <input type="file" name="files"/></td>
+
+         </tr>
+         <tr>
+             <td><p th:text="#{image_bottom.text}"></p></td>
+             <td><input type="file" name="files"/><<td>
+             <td><p th:text="#{image_top.text}"></p></td>
+             <td><input type="file" name="files"/></td>
+
+
+         </tr>
+         <tr>
+             <td><p th:text="#{image_left_side.text}"></p></td>
+             <td><input type="file" name="files"/></td>
+             <td><p th:text="#{image_right_side.text}"></p></td>
+             <td><input type="file" name="files"/></td>
+         </tr>
+
+
+
+
+         </tbody>
+     </table>
+<input type="submit" th:value="#{button.text}">
+
+    </form>
+</div>
+<!--<form method="post"   action="/uploadPhotos"  enctype="multipart/form-data">-->
+<!--    фото зверху-->
+<!--    <input type="file" name="files"/><br>-->
+<!--    фото знизу-->
+<!--    <input type="file" name="files"/><br>-->
+<!--    фото зліва-->
+<!--    <input type="file" name="files"/><br>-->
+<!--    фото зправа-->
+<!--    <input type="file" name="files"/><br>-->
+<!--      <input type="submit" name="button"/><br>-->
+<!--</form>-->
+<!--<form method="post"   action="/upload"  enctype="multipart/form-data">-->
+<!--    фото зверху-->
+<!--    <input type="file" name="files"/><br>-->
+<!--    фото знизу-->
+<!--    <input type="file" name="files"/><br>-->
+<!--    фото зліва-->
+<!--    <input type="file" name="files"/><br>-->
+<!--    фото зправа-->
+<!--    <input type="file" name="files"/><br>-->
+<!--    <input type="submit" name="button"/><br>-->
+<!--</form>-->
+<!--<form th:action="@{/logout}" method="post">-->
+<!--    <input type="submit" value="Sing Out">-->
+<!--</form>-->
+</body>
+</html>

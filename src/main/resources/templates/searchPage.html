@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript">
+        $(function(){
+            $("#products").autocomplete({
+                source: "searchProduct",
+                minLenght: 5
+            });
+        });
+        $(function(){
+            $("#productsfilterAutocompleteName").autocomplete({
+                source: "filterAutocompleteName",
+                minLenght: 5
+            });
+        });
+        $(function(){
+            $("#productsfilterAutocompletePrice").autocomplete({
+                source: "filterAutocompletePrice",
+                minLenght: 5
+            });
+        });
+        $(function(){
+            $("#productsfilterAutocompleteOperativeMemoryVolume").autocomplete({
+                source: "filterAutocompleteOperativeMemoryVolume",
+                minLenght: 5
+            });
+        });
+        $(function(){
+            $("#productsfilterAutocompleteBuildMemory").autocomplete({
+                source: "filterAutocompleteBuildMemory",
+                minLenght: 5
+            });
+        });
+        $(function(){
+            $("#productsfilterAutocompleteMainCamera").autocomplete({
+                source: "filterAutocompleteMainCamera",
+                minLenght: 5
+            });
+        });
+        $(function(){
+            $("#productsfilterAutocompleteDisplay_diagonal").autocomplete({
+                source: "filterAutocompleteDisplay_diagonal",
+                minLenght: 5
+            });
+        });
+         $(function(){
+            $("#productsfilterAutocompleteProcessorNumbersCore").autocomplete({
+                source: "filterAutocompleteProcessorNumbersCore",
+                minLenght: 5
+            });
+
+
+        });
+    </script>
+
+
+</head>
+<body>
+<div th:include="layout/menu :: menuFragment" ></div>
+<div style=" margin: 100px 0px 0px 0px;" class="row">
+<div style=" background: azure; " class="col-sm-2  ">
+
+    <form th:action="@{/user/searchPage}"  th:object="${smartphoneFilter}"  method="post"  >
+        <p th:text="#{name.text}"></p>
+    <p><input type="text" th:field="*{name}"   id="productsfilterAutocompleteName"></p>
+        <p th:text="#{price.text}"></p>
+        <p><input type="text" th:object="${priceDown}"> <input type="text" th:object="${priceUp}"></p>
+
+        <p th:text="#{processor_number_of_cores.text}"></p>
+        <p><input type="text"  th:field="*{smartphoneProcessor.processor_numbers_core}" id="productsfilterAutocompleteProcessorNumbersCore"></p>
+        <p th:text="#{ram_volume.text}"></p>
+        <p><input type="text" th:field="*{smartphoneMemory.operative_memory_volume}"  id="productsfilterAutocompleteOperativeMemoryVolume"></p>
+        <p th:text="#{internal_memory.text}"></p>
+        <p><input type="text"  th:field="*{smartphoneMemory.build_memory}" id="productsfilterAutocompleteBuildMemory"></p>
+        <p th:text="#{the_main_camera.text}"></p>
+        <p><input type="text"  th:field="*{smartphoneCamera.main_camera}" id="productsfilterAutocompleteMainCamera"></p>
+        <p th:text="#{display_diagonal.text}"></p>
+        <p><input type="text" th:field="*{smartphoneDisplay.display_diagonal}"  id="productsfilterAutocompleteDisplay_diagonal"></p>
+
+        <input type="submit" value="Submit">
+       </form>
+</div>
+<div  class="col-sm-10">
+    <div th:if="${ not #lists.isEmpty(parameterSearch)}">
+    <table   >
+        <thead></thead>
+        <tbody     th:each="smartphone:${parameterSearch}"   >
+
+        <tr  >
+            <td><p th:text="*{smartphone.name}"> name</p></td>
+
+        </tr  >
+        <tr>  <td><p th:text="*{smartphone.price}"> price</p></td></tr>
+        <tr>
+            <td><img  th:src="${'data:image/png;base64,' +service.getImage(smar1tphone.image_front)}"  width="150px" height="150px"></td></tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div th:if="${#lists.isEmpty(parameterSearch)}">
+    <table >
+        <thead></thead>
+        <tbody th:each="smartphone:${filterSmartphoneList}" >
+        <tr  >
+            <td><p th:text="*{smartphone.name}"></p></td>
+
+        </tr  >
+        <tr>  <td><p th:text="*{smartphone.price}"></p></td></tr>
+        <tr>
+            <td><img  th:src="${'data:image/png;base64,' +service.getImage(smartphone.image_front)}"  width="150px" height="150px"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

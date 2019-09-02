@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<p>test1</p>
+<div th:include="layout/menu :: menuFragment"></div>
+<form method="post"   action="/uploadPhotos"  enctype="multipart/form-data">
+    верх
+     <input type="file" name="files"/><br>
+    низ
+    <input type="file" name="files"/><br>
+    зліва
+    <input type="file" name="files"/><br>
+    зправа
+    <input type="file" name="files"/><br>
+    <input type="submit" name="button"/><br>
+    </form>
+<form method="post"   action="/uploadExcelFile"  enctype="multipart/form-data">
+    Excel файл
+    <input type="file" name="file"/><br>
+    <input type="submit" name="button"/><br>
+</form>
+<p>test2</p>
+</body>
+</html>
