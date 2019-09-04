@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dao.Cart;
 import com.example.demo.dao.NewProductParse;
 import com.example.demo.dao.ProductFilter;
 import com.example.demo.model.Smartphone;
@@ -24,6 +25,8 @@ public class ProductServiceImpl implements ProductService {
     NewProductParse newProductParse;
     @Autowired
     ProductFilter productFilter;
+    @Autowired
+    Cart productCart;
     @Override
     public List<String> mainSearch(String keyword) {
     return smartphoneRepository.search(keyword);
@@ -48,6 +51,16 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public String getImage(byte[] image) {
         return newProductParse.getImage(image);
+    }
+
+    @Override
+    public   void addProduct(Smartphone smartphone) {
+        productCart.addProduct(smartphone);
+    }
+
+    @Override
+    public List<Smartphone> getProducts() {
+        return productCart.getProducts();
     }
 
     @Override

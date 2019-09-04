@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 import java.util.*;
 import java.util.stream.Collector;
@@ -81,20 +82,40 @@ public List<String> searchAutocomplete(@RequestParam(value = "term", required = 
         return "searchPage";
     }
     @PostMapping("/searchPage")
-    public String searchPage(@ModelAttribute("smartphoneFilter") Smartphone smartphone,@ModelAttribute("priceDown") String priceDown,@ModelAttribute("priceUp") String priceUp, Model model){
+    public String searchPage(@ModelAttribute("smartphoneFilter") Smartphone smartphone, HttpSession session,@ModelAttribute("priceDown") String priceDown,@ModelAttribute("priceUp") String priceUp, Model model){
 
         System.out.println("post method searchPage "+smartphone.getName());
         model.addAttribute("service2",productService);
         model.addAttribute("filterSmartphoneList", productService.mainFilterForSmartphones(smartphone, priceDown, priceUp));
+
       model.addAttribute("selectSmartphone", new Smartphone());
         return "searchPage";
     }
-    @PostMapping("/selectSmartphone")
-    public String sselectSmartphone(@ModelAttribute("selectSmartphone") Smartphone smartphone, Model model){
-        System.out.println("post method searchPage "+smartphone.getName());
+    @GetMapping("/selectSmartphone")
+     public String selectSmartphone(@RequestParam("selectSmartphone") Integer id, Model model){
+
+        model.addAttribute("selectSmartphone", smartphoneRepository.findById(id).get());
+
+
         model.addAttribute("service2",productService);
         return "selectSmartphone";
     }
+    @GetMapping("/addProductInCart")
+    public String addProductInCart(@RequestParam("selectSmartphone") Integer id, Model model){
+
+        model.addAttribute("selectSmartphone", smartphoneRepository.findById(id).get());
+productService.addProduct(smartphoneRepository.findById(id).get());
+
+        model.addAttribute("service2",productService);
+        return "selectSmartphone";
+    }
+    @GetMapping("/cart")
+    public String cart(Model model){
+
+      model.addAttribute("cartProduct", productService.getProducts());
+        return "cart";
+    }
+
     @RequestMapping("/main")
     public String main(Model model){
         model.addAttribute("service",productService);

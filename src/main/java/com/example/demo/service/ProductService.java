@@ -12,6 +12,8 @@ public interface ProductService {
     List<Double> filterByPrice(Double price);
 List<Smartphone> mainFilter(Smartphone smartphone);
     String getImage(byte[] image);
+    void addProduct(Smartphone smartphone);
+    List<Smartphone> getProducts();
     List<Smartphone> mainFilterForSmartphones(Smartphone smartphone, String priceDown, String priceUp);
     List<String> filterBySmartphoneMemoryOperativeMemoryVolume(String operativeMemoryVolume);
     List<String> filterBySmartphoneMemoryBuildMemory(String build_memory);

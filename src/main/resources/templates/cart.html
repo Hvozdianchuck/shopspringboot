@@ -13,31 +13,26 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <script type="text/javascript">
         $(function(){
             $("#products").autocomplete({
                 source: "searchProduct",
-                minLenght: 2
+                minLenght: 5
             });
         });
     </script>
-
 </head>
 <body>
-<div th:include="layout/menu :: menuFragment"></div>
-<!--    <p th:value="'Product name is '+ ${product.getName()}"></p>-->
+<div th:include="layout/menu :: menuFragment" ></div>
 
-<table   style=" margin: 150px 1px 1px 1px;">
-    <thead></thead>
-    <tbody       >
 
-    <tr  >
-        <td> <form  >
-            <input type="submit">
-        </form></td></tr>
-
-    </tbody>
-</table>
+<div style=" margin: 100px 0px 0px 0px;"  >
+  <tr th:each="product :${cartProduct}">
+      <td><p th:text="*{product.name}"></p></td>
+      <td><p th:text="*{product.price}"></p></td>
+  </tr>
+</div>
 
 </body>
 </html>

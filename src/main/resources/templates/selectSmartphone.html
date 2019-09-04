@@ -14,27 +14,55 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-
+    <script type="text/javascript">
+        $(function(){
+            $("#products").autocomplete({
+                source: "searchProduct",
+                minLenght: 5
+            });
+        });
+        </script>
 </head>
 <body>
 <div th:include="layout/menu :: menuFragment" ></div>
 
-            <form >
-                <table >
-                    <thead></thead>
-                    <tbody th:each="smartphone:${selectSmartphone}" >
-                    <tr  >
-                        <td><p th:text="*{smartphone.name}"></p></td>
 
-                    </tr  >
-                    <tr>  <td><p th:text="*{smartphone.price}"></p></td></tr>
-                    <tr>
-                        <td><img  th:src="${'data:image/png;base64,' +service2.getImage(smartphone.image_front)}"  width="150px" height="150px"></td></tr>
+    <div style=" margin: 100px 0px 0px 0px;" id="demo" class="carousel slide" data-ride="carousel">
 
-                    </tbody>
-                </table>
-            </form>
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
 
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img th:src="${'data:image/png;base64,' +service2.getImage(selectSmartphone.image_front)}"  width="300" height="300">
+            </div>
+            <div class="carousel-item">
+                <img th:src="${'data:image/png;base64,' +service2.getImage(selectSmartphone.image_back)}"  width="300" height="300">
+            </div>
+            <div class="carousel-item">
+                <img th:src="${'data:image/png;base64,' +service2.getImage(selectSmartphone.image_left_side)}"  width="300" height="300">
+            </div>
+            <div class="carousel-item">
+                <img th:src="${'data:image/png;base64,' +service2.getImage(selectSmartphone.image_right_side)}"   width="350" height="300">
+            </div>
+        </div>
 
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+  <p th:text="*{selectSmartphone.name}"></p>
+ <p th:text="*{selectSmartphone.price}"></p>
+<a th:href="@{/user/addProductInCart(selectSmartphone=${selectSmartphone.id})}"> add smartphone to cart</a>
 </body>
 </html>
