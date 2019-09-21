@@ -2,18 +2,9 @@ package com.example.demo;
 
 
 
-import com.example.demo.model.Product;
 //import com.example.demo.repository.ProductRepository;
 //import com.example.demo.service.ShopServiceImp;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Lob;
-import java.io.*;
-import java.util.*;
 
 public class TestE {
 

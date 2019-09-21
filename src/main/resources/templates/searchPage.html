@@ -97,19 +97,16 @@
     <div th:if="${ not #lists.isEmpty(parameterSearch)}">
     <table   >
         <thead></thead>
-        <tbody     th:each="smartphone:${parameterSearch}"   >
+        <tbody    >
 
-        <tr  >
-            <td><p th:text="*{smartphone.name}"> name</p></td>
-
-        </tr  >
-        <tr>  <td><p th:text="*{smartphone.price}"> price</p></td></tr>
-
-        <tr>
-            <td><img  th:src="${'data:image/png;base64,' +service.getImage(smartphone.image_front)}"  width="150px" height="150px"></td></tr>
-<tr>
-    <td><a th:href="@{/user/selectSmartphone(selectSmartphone=${smartphone.id})}" >select</a></td>
-</tr>
+        <tr >
+            <th th:each="smartphone:${parameterSearch}"style="border: 1px solid black;">
+                <p th:text="*{smartphone.name}"></p>
+                <p th:text="*{smartphone.price}"></p>
+                <img  th:src="${'data:image/png;base64,' +service.getImage(smartphone.getImage_front())}"  width="150px" height="300px">
+                <p><a th:href="@{/user/selectSmartphone(selectSmartphone=${smartphone.id})}" >select</a></p>
+            </th>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -117,21 +114,15 @@
 <div th:if="${#lists.isEmpty(parameterSearch)}">
     <table >
         <thead></thead>
-        <tbody th:each="smartphone:${filterSmartphoneList}" >
-        <tr  >
-            <td><p th:text="*{smartphone.name}"></p></td>
-
-        </tr  >
-        <tr>  <td><p th:text="*{smartphone.price}"></p></td></tr>
-        <tr>
-            <td><img  th:src="${'data:image/png;base64,' +service2.getImage(smartphone.image_front)}"  width="150px" height="150px"></td></tr>
-       <tr>
-           <td>
-<!--               <form method="WW" th:object="${selectSmartphone}" th:action="@{/user/selectSmartphone(selectSmartphone=${smartphone})}">-->
-               <a th:href="@{/user/selectSmartphone(selectSmartphone=${smartphone.id})}" >select</a>
-
-           </td>
-       </tr>
+        <tbody  >
+        <tr >
+            <th th:each="smartphone:${filterSmartphoneList}" style="border: 1px solid black;">
+                <p th:text="*{smartphone.name}"></p>
+                <p th:text="*{smartphone.price}"></p>
+                <img  th:src="${'data:image/png;base64,' +service2.getImage(smartphone.getImage_front())}"  width="150px" height="300px">
+                <p><a th:href="@{/user/selectSmartphone(selectSmartphone=${smartphone.id})}" >select</a></p>
+            </th>
+        </tr>
         </tbody>
     </table>
 

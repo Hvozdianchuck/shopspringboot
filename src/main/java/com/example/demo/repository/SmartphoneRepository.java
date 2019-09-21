@@ -28,6 +28,7 @@ public interface SmartphoneRepository extends CrudRepository<Smartphone, Object>
       List<Smartphone> filterSmartphoneCameraMainCamera(@Param("mainCamera")String mainCamera);
     @Query("SELECT s FROM Smartphone s where s.smartphoneDisplay.displayDiagonal like %:displayDiagonal%")
       List<Smartphone> filterSmartphoneDisplayDisplayDiagonal(@Param("displayDiagonal")String displayDiagonal);
+
 //    @Query("SELECT s FROM Smartphone s where s.smartphoneMemory.operativeMemoryVolume like %:operativeMemoryVolume%")
 //    List<Smartphone> selectSmartphoneMemoryOperativeMemoryVolume(@Param("operativeMemoryVolume")String operativeMemoryVolume);
 //

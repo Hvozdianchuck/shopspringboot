@@ -12,6 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://sandbox.masterpass.com/integration/merchant.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <script type="text/javascript">
@@ -21,6 +22,8 @@
                 minLenght: 5
             });
         });
+
+
     </script>
 </head>
 <body>
@@ -28,11 +31,57 @@
 
 
 <div style=" margin: 100px 0px 0px 0px;"  >
-  <tr th:each="product :${cartProduct}">
-      <td><p th:text="*{product.name}"></p></td>
-      <td><p th:text="*{product.price}"></p></td>
-  </tr>
-</div>
+    <p>test</p>
+    <table th:each="product :${cartProduct}" >
+             <tbody>  <tr >
+            <td><a th:href="@{/user/removeProductFromCart(product=${product.id})}" th:action="post"> remove product</a></td>
+            <td><p th:text="*{product.name}"></p></td>
+            <td><p th:text="*{product.price}"></p></td>
+        </tr>
+        </tbody>
+    </table>
 
+</div>
+<div>
+  <img id="btnMasterpass" src="https://static.masterpass.com/dyn/img/btn/global/mp_chk_btn_147x034px.svg"/>
+
+    <script  th:inline="javascript" type="text/javascript">
+
+
+
+        function invokeLightBox(){
+
+            masterpass.checkout({
+                "checkoutId": [[${checkout_id}]],
+                "allowedCardTypes": ["master,amex,diners,discover,jcb,maestro,visa"],
+                "amount": [[${amount}]],
+                "currency": "USD",
+                "shippingLocationProfile": "US,AU,BE",
+                "suppress3Ds": false,
+                "suppressShippingAddress": false,
+                "cartId": [[${cart_id}]],
+                "callbackUrl": [[${callback_url}]],
+                "requestPairing": true,                                                 // Set true to request pairing consent from consumer
+                "userId": "Test"
+            });
+
+        }
+
+        function initializeMasterpass(){
+
+            $("#btnMasterpass").on("click",invokeLightBox);
+
+
+        }
+
+
+        (function(){
+
+            initializeMasterpass();
+
+        })();
+
+    </script>
+</div>
 </body>
 </html>

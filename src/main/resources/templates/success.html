@@ -12,35 +12,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://sandbox.masterpass.com/integration/merchant.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <script type="text/javascript">
         $(function(){
             $("#products").autocomplete({
                 source: "searchProduct",
-                minLenght: 2
+                minLenght: 5
             });
         });
-    </script>
 
+
+    </script>
 </head>
 <body>
-<div th:include="layout/menu :: menuFragment"></div>
-<!--    <p th:value="'Product name is '+ ${product.getName()}"></p>-->
+<div th:include="layout/menu :: menuFragment" ></div>
 
-    <table   style=" margin: 150px 1px 1px 1px;">
-        <thead></thead>
-        <tbody        >
-<tr >
-    <th th:each="smartphone:${smartphones}" style="border: 1px solid black;">
-        <p th:text="*{smartphone.name}"></p>
-        <p th:text="*{smartphone.price}"></p>
-        <img  th:src="${'data:image/png;base64,' +service.getImage(smartphone.getImage_front())}"  width="150px" height="300px">
-        <p><a th:href="@{/user/selectSmartphone(selectSmartphone=${smartphone.id})}" >select</a></p>
-    </th>
-</tr>
-
-        </tbody>
-    </table>
-<br>
+<div style=" margin: 100px 0px 0px 0px;"  th:each="s : ${shippingAddress}">
+    <div th:text="${s}"></div>
+</div>
 </body>
 </html>

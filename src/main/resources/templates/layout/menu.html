@@ -30,31 +30,32 @@
 <nav  class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top"  style="z-index: 1" >
 
         <a class="nav-link dropdown-toggle " href="#"  data-toggle="dropdown">
-           Продукти
+            <p th:text="#{product.text}"></p>
         </a>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Компютери</a>
-            <a class="dropdown-item" href="#">Телефони</a>
+            <a class="dropdown-item" href="#"><p th:text="#{computer.text}"></p></a>
+            <a class="dropdown-item" href="#" th:href="@{/user/main}"><p th:text="#{smartphone.text}"></p></a>
         </div>
 
 
     <form class="form-inline" th:action="@{/user/search}"  method="post" >
 
         <input class="form-control " type="text"  name="parameterSearch" id="products" style="z-index: 3"     placeholder="Search">
-        <button class="btn btn-success" type="submit">Пошук</button>
+        <button class="btn btn-success" type="submit"><p th:text="#{search.text}"></p></button>
     </form>
 
-    <div class="dropdown">
-        <button type="button" class=" btn  dropdown-toggle" data-toggle="dropdown">
+<div class="dropdown">
+        <a class="nav-link dropdown-toggle " href="#"  data-toggle="dropdown">
             <p th:text="#{language.text}" style="color:blue;"></p>
-        </button>
-        <div class="dropdown-menu" style="padding-bottom: 10px">
+        </a>
+
+        <div class="dropdown-menu"  >
             <a class="dropdown-item" th:href="@{${#httpServletRequest.getRequestURI()}(language=EN)}">EN</a>
             <a class="dropdown-item" th:href="@{${#httpServletRequest.getRequestURI()}(language=UK)}">UK</a>
 
         </div>
-    </div>
-    <a th:href="@{/user/cart}">Cart</a>
+</div>
+    <a th:href="@{/user/cart}"><p>Cart</p></a>
 
 
      </nav>

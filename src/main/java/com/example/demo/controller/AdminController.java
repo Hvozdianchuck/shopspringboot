@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dao.NewProductParse;
+
 import com.example.demo.model.Computer;
 import com.example.demo.model.Smartphone;
 import com.example.demo.repository.SmartphoneRepository;
@@ -25,13 +26,20 @@ public class AdminController {
     @Autowired
     ProductServiceImpl productService;
 
-    @RequestMapping(value = "/admin", method = RequestMethod.POST)
-    public void setNewSmartphone(@ModelAttribute("newSmartphone") Smartphone smartphone, @RequestParam("files") MultipartFile[] files){
-productService.addNewSmartphone(smartphone, files);
+    @RequestMapping(value = "/adminSmartphone", method = RequestMethod.POST)
+    public String setNewSmartphone(@ModelAttribute("newSmartphone") Smartphone smartphone, @RequestParam("files") MultipartFile[] files){
+        System.out.println("test adminSmartphone");
+        productService.addNewSmartphone(smartphone, files);
+        return "admin";
  }
+    @RequestMapping(value = "/adminComputer", method = RequestMethod.POST)
+    public void setNewComputer(@ModelAttribute("newComputer") Computer computer, @RequestParam("files") MultipartFile[] files){
+
+    }
+
     @RequestMapping("/admin")
     public String admin(Model model){
-        model.addAttribute("newComputer", new Computer());
+
         model.addAttribute("newSmartphone", new Smartphone());
         return "admin";
     }

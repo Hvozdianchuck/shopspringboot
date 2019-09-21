@@ -40,16 +40,16 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img th:src="${'data:image/png;base64,' +service2.getImage(selectSmartphone.image_front)}"  width="300" height="300">
+                <img th:src="${'data:image/png;base64,' +service2.getImage(selectSmartphone.image_front)}"  width="300" height="500">
             </div>
             <div class="carousel-item">
-                <img th:src="${'data:image/png;base64,' +service2.getImage(selectSmartphone.image_back)}"  width="300" height="300">
+                <img th:src="${'data:image/png;base64,' +service2.getImage(selectSmartphone.image_back)}"  width="300" height="500">
             </div>
             <div class="carousel-item">
-                <img th:src="${'data:image/png;base64,' +service2.getImage(selectSmartphone.image_left_side)}"  width="300" height="300">
+                <img th:src="${'data:image/png;base64,' +service2.getImage(selectSmartphone.image_left_side)}"  width="300" height="500">
             </div>
             <div class="carousel-item">
-                <img th:src="${'data:image/png;base64,' +service2.getImage(selectSmartphone.image_right_side)}"   width="350" height="300">
+                <img th:src="${'data:image/png;base64,' +service2.getImage(selectSmartphone.image_right_side)}"   width="350" height="500">
             </div>
         </div>
 
@@ -61,8 +61,198 @@
             <span class="carousel-control-next-icon"></span>
         </a>
     </div>
+<p th:text="#{name.text}"></p>
   <p th:text="*{selectSmartphone.name}"></p>
+<p th:text="#{price.text}"></p>
  <p th:text="*{selectSmartphone.price}"></p>
 <a th:href="@{/user/addProductInCart(selectSmartphone=${selectSmartphone.id})}"> add smartphone to cart</a>
+ <p th:text="#{text_information.text}"></p>
+  <p   th:text="${selectSmartphone.text_information}"></p>
+<table>
+    <thead>
+   Futher information   about smartphone
+    </thead>
+    <tbody style="border: 1px solid black;">
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{name.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.name}"></p></td>
+        <td><p th:text="#{price.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.price}"></p></td>
+        <td><p th:text="#{number.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.number}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+
+        <td><p th:text="#{article.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.article}"></p></td>
+        <td><p th:text="#{model_line.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.model_line}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{class_smartphone.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.class_SmartPhone}"></p></td>
+        <td><p th:text="#{number_of_SIM_cards.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.number_0f_sim_carts}"></p></td>
+        <td><p th:text="#{sim_card_format.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.format_sim_carts}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{data_transfer_standards.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.standards_transfer_data}"></p></td>
+        <td><p th:text="#{LTE.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.lte}"></p></td>
+        <td><p th:text="#{security.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.security}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{operating_system.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.OS}"></p></td>
+        <td><p th:text="#{charging_technologies.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.charging_technologies}"></p></td>
+        <td><p th:text="#{battery_type.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.battery}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{battery_capacity.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.battery_capacity}"></p></td>
+        <td><p th:text="#{wireless_technology.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.wireless_technologies}"></p></td>
+        <td><p th:text="#{WLAN.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.WLAN}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{bluetooth.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.bluetooth}"></p></td>
+        <td><p th:text="#{NFC_chip_near_field_communication.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.NFC_chip}"></p></td>
+        <td><p th:text="#{satellite_system.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.satellite_system}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{case_material.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.case_material}"></p></td>
+        <td><p th:text="#{dust_and_moisture_protection.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.dust_wet_protect}"></p></td>
+        <td><p th:text="#{shockproof.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.shockproof}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{color_primary.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.main_color}"></p></td>
+        <td><p th:text="#{thickness.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.thickness}"></p></td>
+        <td><p th:text="#{total_width_of_the_product.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.total_width_of_the_product}"></p></td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{total_height_of_product.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.total_hight_of_the_product}"></p></td>
+        <td><p th:text="#{weight.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.weight}"></p></td>
+        <td><p th:text="#{interfaces.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.interfaces}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{graduation_year.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.graduation_year}"></p></td>
+        <td><p th:text="#{model.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.model_line}"></p></td>
+        <td><p th:text="#{level_2_lineup.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.model_line_second_level}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{warranty.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.graduation_year}"></p></td>
+        <td><p th:text="#{radio.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.radio}"></p></td>
+        <td><p th:text="#{screen_position_sensor.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.screen_position_sensor}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{light_sensor.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.light_sensor}"></p></td>
+        <td><p th:text="#{proximity_sensor.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.proximity_sensor}"></p></td>
+        <td><p th:text="#{producing_country.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.producing_country}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+         <td><p th:text="#{internal_memory.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneMemory.build_memory}"></p></td>
+        <td><p th:text="#{memory_card_support.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneMemory.carts_memory}"></p></td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{ram_volume.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneMemory.operative_memory_volume}"></p></td>
+        <td><p th:text="#{os_version.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.version_OS}"></p></td>
+        <td><p th:text="#{sim_card_mode.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.sim_cart_mode}"></p></td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{communication_standard.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.standard_conection}"></p></td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{memory_card_capacity_up_to.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneMemory.volume_of_memory}"></p></td>
+        <td><p th:text="#{processor_number_of_cores.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneProcessor.processor_numbers_core}"></p></td>
+        <td><p th:text="#{processor_manufacturer.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneProcessor.processor_producer}"></p></td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{processor_model.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneProcessor.processor_model}"></p></td>
+        <td><p th:text="#{processor_clock_speed.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneProcessor.processor_clock_frequency}"></p></td>
+        <td><p th:text="#{GPU.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneProcessor.graphic_processor}"></p></td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{display_diagonal.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneDisplay.display_diagonal}"></p></td>
+        <td><p th:text="#{display_maximum_resolution.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneDisplay.display_maximum_resolution}"></p></td>
+        <td><p th:text="#{display_matrix_type.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneDisplay.display_matrix_type}"></p></td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{display_pixel_density_per_inch.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneDisplay.display_pixel_density_per_inch}"></p></td>
+        <td><p th:text="#{display_security.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneDisplay.display_security}"></p></td>
+        <td><p th:text="#{the_main_camera.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneCamera.main_camera}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{the_main_camera_is_optional.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneCamera.main_camera_futher}"></p></td>
+        <td><p th:text="#{video_recording.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneCamera.video_recording}"></p></td>
+        <td><p th:text="#{selfie_camera.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneCamera.front_camera}"></p></td>
+
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td><p th:text="#{front_camera_optional.text}"></p></td>
+        <td> <p   th:text="${selectSmartphone.smartphoneCamera.front_camera}"></p></td>
+     </tr>
+        </tbody>
+</table>
 </body>
 </html>

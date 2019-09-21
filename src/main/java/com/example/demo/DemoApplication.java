@@ -1,15 +1,11 @@
 package com.example.demo;
 
 
-import com.example.demo.dao.NewProductParse;
-
-
 import com.example.demo.dao.ProductFilter;
-import com.example.demo.model.Computer;
-import com.example.demo.model.Product;
-import com.example.demo.model.Smartphone;
-import com.example.demo.repository.ComputerRepository;
 
+
+import com.example.demo.repository.ProductRepository;
+import com.example.demo.repository.PurchaseRepository;
 import com.example.demo.repository.SmartphoneRepository;
 
 import com.example.demo.service.ProductServiceImpl;
@@ -18,19 +14,28 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.client.RestTemplate;
-import java.util.List;
+
+import java.util.concurrent.Executor;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackageClasses= {ComputerRepository.class, SmartphoneRepository.class})
+@EnableJpaRepositories(basePackageClasses=  { SmartphoneRepository.class})
+@EnableAsync
  public class DemoApplication extends SpringBootServletInitializer implements   CommandLineRunner {
 @Autowired
 SmartphoneRepository smartphoneRepository;
+@Autowired
+    PurchaseRepository purchaseRepository;
+@Autowired
+ProductRepository repository;
     @Autowired
     ProductServiceImpl productService;
     @Autowired
@@ -38,6 +43,14 @@ SmartphoneRepository smartphoneRepository;
     @Bean
     RestTemplate getRestTemplate(){
         return new RestTemplate();
+    }
+    @Bean
+    public Executor taskExecutor(){
+        ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
+        threadPoolTaskExecutor.setCorePoolSize(100);
+        threadPoolTaskExecutor.setMaxPoolSize(200);
+        threadPoolTaskExecutor.setQueueCapacity(1000);
+        return threadPoolTaskExecutor;
     }
 
     public static void main(String[] args) {
@@ -54,8 +67,15 @@ SmartphoneRepository smartphoneRepository;
 //
 //
 
+//        repository.deleteById(5);
+//        repository.deleteById(10);
+//        repository.deleteById(11);
+//        repository.deleteById(12);
+//        repository.deleteById(13);
+//        repository.deleteById(14);
 
-smartphoneRepository.filterSmartphoneMemoryBuildMemory("2 ГБ").forEach(x-> System.out.println(x.getName()));
+
+
 //        NewProductParse.readNewProducts();
 //       List<Product> list = NewProductParse.getProduct_from_file();
 //       shopService.saveListProducts(list,x->x.forEach(y->productRepository.save(y)));

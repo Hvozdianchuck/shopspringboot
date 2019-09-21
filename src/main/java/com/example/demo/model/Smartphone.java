@@ -1,20 +1,16 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Smartphone   {
-    @Id
-    @GeneratedValue
-    private int id;
-    private String name;
-    private double price;
-    private int number;
+public class Smartphone extends Product implements  Serializable {
+
     private boolean available;
     private String sim_cart_mode;
     @Lob
     private String text_information;
-//    private byte[] text_information2;
+
     @Lob
     private byte[] image_front;
     @Lob
@@ -428,37 +424,6 @@ private String bar_code;
         this.bar_code = bar_code;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
 
     public boolean isAvailable() {
         return available;

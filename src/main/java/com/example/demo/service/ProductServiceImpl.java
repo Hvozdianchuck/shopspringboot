@@ -3,7 +3,10 @@ package com.example.demo.service;
 import com.example.demo.dao.Cart;
 import com.example.demo.dao.NewProductParse;
 import com.example.demo.dao.ProductFilter;
+import com.example.demo.model.Product;
+import com.example.demo.model.Purchase;
 import com.example.demo.model.Smartphone;
+import com.example.demo.repository.PurchaseRepository;
 import com.example.demo.repository.SmartphoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.StreamSupport;
 @Transactional
 @Service
@@ -22,7 +27,10 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     SmartphoneRepository smartphoneRepository;
     @Autowired
+    PurchaseRepository purchaseRepository;
+    @Autowired
     NewProductParse newProductParse;
+
     @Autowired
     ProductFilter productFilter;
     @Autowired
@@ -30,6 +38,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<String> mainSearch(String keyword) {
     return smartphoneRepository.search(keyword);
+    }
+
+    @Override
+    public Double addition() {
+        return productCart.addition();
     }
 
     @Override
@@ -55,12 +68,35 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public   void addProduct(Smartphone smartphone) {
+
+            smartphone.setNumber(1);
+        System.out.println("add Smartphone"+smartphone.getNumber()+" "+smartphone.getName());
+
         productCart.addProduct(smartphone);
+
     }
 
     @Override
-    public List<Smartphone> getProducts() {
+    public void removeProduct(Integer integer) {
+        productCart.removeProduct(integer);
+    }
+
+    @Override
+    public List<Product> getProducts() {
         return productCart.getProducts();
+    }
+
+    @Override
+    public void clearCart() {
+        for (int i = 0; i < productCart.getProducts().size(); i++) {
+            Smartphone product= smartphoneRepository.findById(productCart.getProducts().get(i).getId()).get();
+
+            product.setNumber(product.getNumber()-1);
+
+            smartphoneRepository.save(product);
+        }
+        productCart.clearCart();
+
     }
 
     @Override
@@ -135,4 +171,14 @@ public class ProductServiceImpl implements ProductService {
     public Map<String, List<String>> getImage(List<Smartphone> products) {
         return newProductParse.getImage(products);
     }
+public void savePurchase(List<Product> products, String name, int number, String phone){
+        Purchase purchase=new Purchase();
+         purchase.setNumberOfBuyingProduct(number);
+         purchase.setNameCustomer(name);
+         purchase.setPhoneCustomer(phone);
+purchase.setProducts(products);
+         purchase.setBuying(LocalDateTime.now());
+         purchase.setGetting(LocalDateTime.now().plusDays(7));
+     purchaseRepository.save(purchase);
+}
 }
